@@ -1,6 +1,7 @@
 import React, { Component } from  'react';
 import config from '../config'
 import './AddBookmark.css';
+import BookmarksContext from '../BookmarksContext'
 
 const Required = () => (
   <span className='AddBookmark__required'>*</span>
@@ -14,6 +15,8 @@ class AddBookmark extends Component {
   state = {
     error: null,
   };
+
+  static contextType = BookmarksContext
 
   handleSubmit = e => {
     e.preventDefault()
@@ -49,7 +52,8 @@ class AddBookmark extends Component {
         url.value = ''
         description.value = ''
         rating.value = ''
-        this.props.onAddBookmark(data)
+        this.context.addBookmark(data)
+        this.props.history.push('/')
       })
       .catch(error => {
         this.setState({ error })

@@ -1,14 +1,19 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 export default function Nav(props) {
   return (
     <nav className='Nav'>
-      <button onClick={() => props.clickPage('list')}>
+      <button>
+        <Link to = '/'>
         Bookmark List
+        </Link>
       </button>
       {' '}
-      <button onClick={() => props.clickPage('add')}>
+      <button>
+      <Link to = '/add'>
         Add Bookmark
+      </Link>
       </button>
     </nav>
   );
